@@ -1,0 +1,36 @@
+<?xml version="1.0"?>
+<scenario>
+    <environment>
+        <ned latitude="39.99" longitude="-0.07" />
+        <ocean />
+        <atmosphere>
+            <sun azimuth="-100.0" elevation="60.0" />
+        </atmosphere>
+    </environment>
+
+    <materials>
+        <material name="Concrete" density="2400.0" restitution="0.5" friction="0.8"/>
+    </materials>
+
+    <looks>
+        <look name="GrayPaint" gray="0.7" roughness="0.5" metalness="0.1"/>
+    </looks>
+
+    <static name="Tank" type="model">
+        <physical>
+            <mesh filename="cirtesu/full_cirtesu_physics.obj" scale="1.0" />
+            <origin rpy="0.0 0.0 0.0" xyz="0.0 0.0 0.0" />
+        </physical>
+
+        <visual>
+            <mesh filename="cirtesu/full_cirtesu_visual.obj" scale="1.0" />
+            <origin rpy="0.0 0.0 0.0" xyz="0.0 0.0 0.0" />
+        </visual>
+
+        <material name="Concrete" />
+        <look name="cirtesu_full_tank" />
+        
+        <world_transform rpy="0.0 0.0 0.0" xyz="0.0 0.0 0.0" />
+    </static>
+
+</scenario>
