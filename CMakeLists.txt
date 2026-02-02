@@ -1,10 +1,13 @@
 cmake_minimum_required(VERSION 3.5)
-project(blueboat_cirtesu)
+project(blueboat_stonefish)
 
 find_package(ament_cmake REQUIRED)
 find_package(rclcpp REQUIRED)
 find_package(std_msgs REQUIRED)
 find_package(stonefish_ros2 REQUIRED) 
+find_package(urdf REQUIRED)
+find_package(xacro REQUIRED)
+find_package(robot_state_publisher REQUIRED)
 
 # Asegúrate de que esté habilitado el soporte para C
 enable_language(C)
@@ -34,7 +37,7 @@ install(DIRECTORY launch
 )
 
 # Install data and scenarios folders
-install(DIRECTORY data scenarios
+install(DIRECTORY data scenarios urdf meshes config resources
   DESTINATION share/${PROJECT_NAME}
 )
 

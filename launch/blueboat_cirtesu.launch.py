@@ -1,7 +1,7 @@
 import os
 from launch import LaunchDescription
 from launch.actions import DeclareLaunchArgument, GroupAction, IncludeLaunchDescription
-from launch.substitutions import LaunchConfiguration, PathJoinSubstitution
+from launch.substitutions import LaunchConfiguration, PathJoinSubstitution, Command
 from launch_ros.actions import Node
 from launch_ros.substitutions import FindPackageShare
 from ament_index_python.packages import get_package_share_directory
@@ -14,6 +14,22 @@ def generate_launch_description():
         default_value='blueboat',
         description='Name of the robot'
     )
+    
+    xacro_file = PathJoinSubstitution([
+        FindPackageShare('blueboat_stonefish'),
+        "urdf",
+        "blueboat.xacro"
+    ])
+    
+    robot_state_publisher_node = Node(
+        package="robot_state_publisher",
+        executable="robot_state_publisher",
+        name="robot_state_publisher",
+        parameters=[{
+            "robot_description": Command(["xacro ", xacro_file]),
+            'use_sim_time':True
+        }]
+    )
 
     # Group action with namespace
     namespace_action = GroupAction(
@@ -25,10 +41,10 @@ def generate_launch_description():
                 ]),
                 launch_arguments={
                     'simulation_data': PathJoinSubstitution([
-                        FindPackageShare('cirtesu_stonefish'), 'data'
+                        FindPackageShare('blueboat_stonefish'), 'data'
                     ]),
                     'scenario_desc': PathJoinSubstitution([
-                        FindPackageShare('cirtesu_stonefish'), 'scenarios', 'cirtesu','blueboat_cirtesu_full_tank.scn'
+                        FindPackageShare('blueboat_stonefish'), 'scenarios' ,'blueboat_cirtesu_full_tank.scn'
                     ]),
                     'simulation_rate': '100.0',
                     'window_res_x': '1200',
@@ -43,6 +59,7 @@ def generate_launch_description():
 
     return LaunchDescription([
         robot_name_arg,
+        robot_state_publisher_node,
         namespace_action
     ,
         # Node(
@@ -56,12 +73,21 @@ def generate_launch_description():
         #     output='screen',
         # ),
             Node(
-            package='cirtesu_stonefish',
+            package='blueboat_stonefish',
             executable='odom2tf.py',
             output='screen',
         ),
+            
         Node(
-            package='cirtesu_stonefish',
+            package='rviz2',
+            executable='rviz2',
+            name='rviz2',
+            arguments=['-d', PathJoinSubstitution(['src', 'blueboat_stonefish', 'config', 'blueboat_stonefish_config.rviz'])],
+            output='screen'
+        ),
+        
+        Node(
+            package='blueboat_stonefish',
             namespace='blueboat',
             executable='ardusim_patch.py',
             name='ardusim_patch',

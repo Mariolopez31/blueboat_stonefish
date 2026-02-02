@@ -1,24 +1,17 @@
 <?xml version="1.0"?>
 <scenario>
-    <looks>
+	<looks>
         <look name="black" gray="0.05" roughness="0.2" metalness="0.0"/>
-    </looks>
-    
-    <looks>
-        <look name="gray" gray="1" roughness="0.2" metalness="0.0"/>
-    </looks>
-    
-        <looks>
+        <look name="gray" gray="1.0" roughness="0.2" metalness="0.0"/>
         <look name="transparent" gray="1.0" roughness="0.0" metalness="0.0"/>
         <look name="blue" rgb="0.0 0.3 0.8" roughness="0.0"/>
         <look name="yellow" rgb="1.0 1.0 0.0" roughness="0.0"/>
+        <look name="manipulator" rgb="0.2 0.2 0.2" roughness="0.5"/>
     </looks>
-    
-    
 
 
 	<robot name="blueboat" fixed="false" self_collisions="false">
-		<base_link name="Vehicle" type="compound" physics="submerged">
+		<base_link name="blueboat_base_link" type="compound" physics="submerged">
 			<external_part name="SideR" type="model" physics="submerged" buoyant="false">
 				<physical>
 					<mesh filename="opti_blueboat/right_side_or.obj" scale="1.0"/>
@@ -103,7 +96,7 @@
 				<compound_transform rpy="0.0 0.0 -1.571" xyz="0.0 0.0 0.0"/>
 			</external_part>			
 						
-			<internal_part name="BatteryCylinder" type="cylinder" physics="submerged" buoyant="true">
+			<internal_part name="BatteryCylinder1" type="cylinder" physics="submerged" buoyant="true">
 				<dimensions radius="0.08" height="0.7"/>
 				<origin rpy="0.0 0.0 0.0" xyz="0.0 0.0 0.0"/>
 				<material name="Neutral"/>
@@ -112,7 +105,7 @@
 				<compound_transform rpy="0.0 1.571 0.0" xyz="0.0 -0.3 -0.1"/>
 			</internal_part> 
 
-			<internal_part name="BatteryCylinder" type="cylinder" physics="submerged" buoyant="true">
+			<internal_part name="BatteryCylinder2" type="cylinder" physics="submerged" buoyant="true">
 				<dimensions radius="0.08" height="0.7"/>
 				<origin rpy="0.0 0.0 0.0" xyz="0.0 0.0 0.0"/>
 				<material name="Neutral"/>
@@ -136,7 +129,7 @@
 			<thrust_model type="quadratic">
 				<thrust_coeff value="1.0"/>
 			</thrust_model>
-			<link name="Vehicle"/>
+			<link name="blueboat_base_link"/>
 		</actuator>
 
 		<actuator name="Thruster_L" type="thruster">
@@ -153,13 +146,13 @@
 			<thrust_model type="quadratic">
     			<thrust_coeff value="1.0"/>
 			</thrust_model>
-			<link name="Vehicle"/>
+			<link name="blueboat_base_link"/>
 		</actuator>
 		
 
 
 		<sensor name="dvl" type="dvl" rate="5.0">
-			<link name="Vehicle"/>
+			<link name="blueboat_base_link"/>
 			<origin rpy="3.1416 0.0 -0.785" xyz="-0.75 0.0 0.4"/>
 			<specs beam_angle="30.0"/>
 			<range velocity="9.0 9.0 9.0" altitude_min="0.5" altitude_max="81.0"/>
@@ -168,31 +161,31 @@
 		</sensor>
 
 		<sensor name="imu_filter" type="imu" rate="20.0">
-			<link name="Vehicle"/>
+			<link name="blueboat_base_link"/>
 			<origin rpy="0.0 0.0 0.0" xyz="0.35 -0.35 -0.2"/>
 			<noise angle="0.000001745" angular_velocity="0.00001745"/>
 			<ros_publisher topic="/blueboat/navigator/imu"/>
 		</sensor>
 
 		<sensor name="gps" type="gps" rate="1.0">
-			<link name="Vehicle"/>
+			<link name="blueboat_base_link"/>
 			<origin rpy="0.0 0.0 0.0" xyz="-0.35 0.15 -0.35"/>
 			<noise ned_position="0.5"/>
 			<ros_publisher topic="/blueboat/navigator/gps"/>
 		</sensor>
 
 		<sensor name="camera_front" type="camera" rate="30.0">
-            <link name="Vehicle"/>
+            <link name="blueboat_base_link"/>
             <origin rpy="0.0 0.0 0.0" xyz="0.45 0.0 0.1"/>
             <specs resolution_x="640" resolution_y="480" horizontal_fov="80.0"/>
             <ros_publisher topic="/blueboat/camera/image_raw"/>
         </sensor>
 
 		<sensor name="lidar_front" type="lidar_cpu" rate="10.0">
-			<link name="Vehicle"/> 
-			<origin rpy="0.0 0.0 0.0" xyz="0.5 0.0 -0.2"/> 
-			<specs horizontal_res="512" vertical_res="16" horizontal_fov="360.0" vertical_fov="30.0"/>
-			<range min="0.5" max="100.0"/>
+			<link name="blueboat_base_link"/> 
+			<origin rpy="3.1416 0.0 0.0" xyz="0.0 0.0 -1.2"/> 
+			<specs horizontal_res="1028" vertical_res="32" horizontal_fov="360.0" vertical_fov="30.0"/>
+			<range min="0.0" max="100.0"/>
 			<ros_publisher topic="/blueboat/lidar_points"/> 
 		</sensor>
 		
