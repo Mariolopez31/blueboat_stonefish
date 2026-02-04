@@ -49,7 +49,7 @@
     <joint name="${prefix}lidar_joint" type="fixed">
       <parent link="${prefix}base_link"/>
       <child link="blueboat/lidar_front"/>
-      <origin xyz="0.0 0.0 -1.2" rpy="3.1416 0 0"/>
+      <origin xyz="0.0 0.0 -1.0" rpy="3.1416 0 0"/>
     </joint>
 
     <!-- gps Link -->

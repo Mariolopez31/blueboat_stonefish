@@ -37,7 +37,7 @@ install(DIRECTORY launch
 )
 
 # Install data and scenarios folders
-install(DIRECTORY data scenarios urdf meshes config resources
+install(DIRECTORY data scenarios urdf meshes config 
   DESTINATION share/${PROJECT_NAME}
 )
 

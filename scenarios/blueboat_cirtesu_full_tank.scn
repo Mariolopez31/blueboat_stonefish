@@ -33,7 +33,7 @@
 		</friction_table>
 	</materials>
 
-	<include file="$(find blueboat_stonefish)/scenarios/cirtesu_full.scn" />
+	<include file="$(find blueboat_stonefish)/scenarios/cirtesu_full_roof.scn" />
 
 <include file="$(find blueboat_stonefish)/scenarios/blueboat_lidar.scn"> 
 		<arg name="position" value="0.0 0.0 0.0"/>
