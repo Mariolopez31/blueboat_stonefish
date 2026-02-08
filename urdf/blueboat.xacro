@@ -67,6 +67,6 @@
   </xacro:macro>
 
   <!-- LLAMAR A LA MACRO -->
-  <xacro:blueboat_macro prefix="blueboat_"/>
+  <xacro:blueboat_macro prefix="blueboat/"/>
   
 </robot>

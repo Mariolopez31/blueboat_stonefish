@@ -15,7 +15,7 @@ class OdomToTf(Node):
         qos_profile = QoSProfile(depth=10)
         self.subscription = self.create_subscription(
             Odometry,
-            '/bluerov/navigator/odometry',
+            '/blueboat/navigator/odometry',
             self.callback,
             qos_profile)
         self.br = TransformBroadcaster(self)
@@ -23,9 +23,9 @@ class OdomToTf(Node):
     def callback(self, msg):
         t = TransformStamped()
 
-        t.header.stamp = Time(seconds=msg.header.stamp.sec, nanoseconds=msg.header.stamp.nanosec).to_msg()
+        t.header.stamp = msg.header.stamp
         t.header.frame_id = 'world_ned'
-        t.child_frame_id = 'bluerov/base_link'
+        t.child_frame_id = 'blueboat/base_link'
 
         t.transform.translation.x = msg.pose.pose.position.x
         t.transform.translation.y = msg.pose.pose.position.y
