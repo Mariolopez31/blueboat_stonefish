@@ -1,31 +1,44 @@
-# CIRTESU Blueboat Stonefish Package
+# blueboat_stonefish — CIRTESU BlueBoat Stonefish Simulation (ROS 2)
 
-This repository contains a specialized **Stonefish** simulation suite developed at **CIRTESU (Castellón)**. It includes all the necessary packages and configurations required to work with the **Blueboat** surface vehicle across various highly detailed scenarios that replicate the CIRTESU facilities.
+This repository contains a specialized **Stonefish** simulation suite developed at **CIRTESU (Castellón, Spain)**.  
+It provides the required packages, assets, and configurations to simulate the **BlueBoat** USV in highly detailed scenarios that replicate the CIRTESU facilities.
 
-## Description
+## Overview
 
-The main objective of this package is to provide a high-fidelity simulation environment for maritime robotics. 
-* **Detailed Scenarios:** Includes complete and precise environments modeled after the CIRTESU facility in Castellón.
-* **Blueboat Integration:** Pre-configured physics, sensors, and actuators tailored for the Blueboat surface robot.
-* **Ready for Research:** Designed for testing navigation, control, and autonomy algorithms in a realistic maritime setting.
+The main goal of this package is to provide a high-fidelity maritime robotics simulation environment:
 
----
+- **Detailed scenarios:** Realistic environments modeled after the CIRTESU facility.
+- **BlueBoat integration:** Pre-configured robot model, sensors, and actuation suited for BlueBoat.
+- **Research-ready:** Useful for testing navigation, control, localization, and autonomy in a realistic setting.
+
+## Notes on Stonefish modifications
+
+This project is developed against a **modified Stonefish** version that includes support for a **terrestrial (2D) LiDAR** sensor.  
+Upstream/public release of that LiDAR work is planned, but it may not be available in the official repositories yet.
 
 ## Prerequisites
 
-To use this package, you must have the following dependencies installed in your ROS 2 workspace:
+You must have the following dependencies in your ROS 2 environment:
 
-1.  **Stonefish**: The core C++ physics engine for maritime simulation.
-2.  **stonefish_ros2**: The ROS 2 interface and library for the Stonefish simulator.
+- **Stonefish (simulator core)**  
+  Repository: https://github.com/patrykcieslak/stonefish.git
 
----
+- **stonefish_ros2 (ROS 2 integration)**  
+  Repository: https://github.com/patrykcieslak/stonefish_ros2.git
 
-## Installation & Setup
+> Tip: Ensure you use compatible branches/versions for your ROS 2 distribution.
 
-Follow these steps to clone and build the package in your local environment:
+## Installation
 
-### 1. Clone the repository
-Navigate to your ROS 2 workspace `src` folder and clone the repository:
+### 1. Clone into your ROS 2 workspace
+
 ```bash
+mkdir -p ~/your_ws/src
 cd ~/your_ws/src
-git clone 
+
+# Dependencies
+git clone https://github.com/patrykcieslak/stonefish.git
+git clone https://github.com/patrykcieslak/stonefish_ros2.git
+
+# This package
+git clone <THIS_REPO_URL>
