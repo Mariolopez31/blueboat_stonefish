@@ -4,23 +4,31 @@
   <!-- Definir un macro llamado blueboat_macro -->
   <xacro:macro name="blueboat_macro" params="prefix">
     <!-- Base Link -->
-    <link name="${prefix}base_link">
-      <visual>
-        <origin rpy="3.1416 0 -1.5708" xyz="0 0 0" />
-        <geometry>
-          <mesh filename="package://blueboat_stonefish/meshes/blueboat.dae" scale="1 1 1"/>
-        </geometry>
-        <material name="blue">
-          <color rgba="0 0 1 1"/>
-        </material>
-      </visual>
-      <collision>
-        <origin rpy="3.1416 0 -1.5708" xyz="0 0 0" />
-        <geometry>
-          <mesh filename="package://blueboat_stonefish/meshes/blueboat.dae" scale="1 1 1"/>
-        </geometry>
-      </collision>
-    </link>
+  <link name="${prefix}base_link"/>
+
+  <link name="${prefix}base_link_urdf">
+    <visual>
+      <origin rpy="3.1416 0 -1.5708" xyz="0 0 0"/>
+      <geometry>
+        <mesh filename="package://blueboat_stonefish/meshes/blueboat.dae" scale="1 1 1"/>
+      </geometry>
+      <material name="blue"><color rgba="0 0 1 1"/></material>
+    </visual>
+    <collision>
+      <origin rpy="3.1416 0 -1.5708" xyz="0 0 0"/>
+      <geometry>
+        <mesh filename="package://blueboat_stonefish/meshes/blueboat.dae" scale="1 1 1"/>
+      </geometry>
+    </collision>
+  </link>
+
+  <joint name="${prefix}base_link_urdf_joint" type="fixed">
+    <parent link="${prefix}base_link"/>
+    <child link="${prefix}base_link_urdf"/>
+    <!-- offset COM -> origen del mesh -->
+    <origin xyz="-0.275 0 -0.23" rpy="0 0 0"/>
+  </joint>
+
 
     <!-- Camera link -->
     <link name="blueboat_camera_link">
@@ -31,7 +39,7 @@
     </link>
 
     <joint name="${prefix}camera_joint" type="fixed">
-      <parent link="${prefix}base_link"/>
+      <parent link="${prefix}base_link_urdf"/>
       <child link="blueboat_camera_link"/>
       <origin xyz="0.45 0.0 0.1" rpy="0 0 0"/>
     </joint>
@@ -47,9 +55,9 @@
     
     <!-- Joint que une el libox a la base -->
     <joint name="${prefix}lidar_joint" type="fixed">
-      <parent link="${prefix}base_link"/>
+      <parent link="${prefix}base_link_urdf"/>
       <child link="blueboat/lidar_front"/>
-      <origin xyz="0.0 0.0 -1.0" rpy="3.1416 0 0"/>
+      <origin xyz=".39 -0.36 -0.05" rpy="3.1416 0 0"/>
     </joint>
 
     <!-- gps Link -->
@@ -58,7 +66,7 @@
     
     <!-- Joint que une el gps a la base -->
     <joint name="${prefix}gps_joint" type="fixed">
-      <parent link="${prefix}base_link"/>
+      <parent link="${prefix}base_link_urdf"/>
       <child link="gps_frame"/>
       <origin xyz=".39 -0.36 -0.05" rpy="3.1416 0 1.57"/>
     </joint>
