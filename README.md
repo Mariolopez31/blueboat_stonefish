@@ -23,7 +23,7 @@ Typical components you will find in this repo:
 - **Meshes / textures** for CIRTESU environments and visualization assets.
 - **BlueBoat robot description**:
   - Publishes `/robot_description` using **xacro** (URDF pipeline).
-  - Includes relevant links/frames (e.g., `blueboat/base_link`, `blueboat/lidar_front`, `blueboat_camera_link`, `gps_frame`, etc.).
+  - Includes relevant links/frames (e.g., `blueboat/base_link`, `blueboat/lidar_front`, `blueboat/camera_link`, `gps_frame`, etc.).
 - **Sensor setup** (depending on the scenario/launch):
   - LiDAR point cloud topic (e.g., `/blueboat/lidar_points`)
   - Camera image topic (e.g., `/blueboat/camera/image_raw/image_color`)

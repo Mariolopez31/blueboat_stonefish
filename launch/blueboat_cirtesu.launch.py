@@ -87,14 +87,14 @@ def generate_launch_description():
             output='screen'
         ),
         
-        Node(
-            package='blueboat_stonefish',
-            namespace='blueboat',
-            executable='ardusim_patch.py',
-            name='ardusim_patch',
-            output='screen',
-            emulate_tty='true',
-        ),
+        # Node(
+        #     package='blueboat_stonefish',
+        #     namespace='blueboat',
+        #     executable='ardusim_patch.py',
+        #     name='ardusim_patch',
+        #     output='screen',
+        #     emulate_tty='true',
+        # ),
 
         # Launch core_sim
         # IncludeLaunchDescription(

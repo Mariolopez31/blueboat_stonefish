@@ -60,7 +60,7 @@
 				<compound_transform rpy="0.0 0.0 0.0" xyz="0.0 0.0 0.0"/>
 			</external_part>
 			
-			<external_part name="MetalRear" type="box" physics="surface" buoyant="false">
+					<external_part name="MetalRear" type="box" physics="surface" buoyant="false">
 				<dimensions xyz="0.55 0.025 0.025"/>
 				<origin rpy="0.0 0.0 0.0" xyz="0.025 -0.26 -0.215"/>
 				<material name="Polyamid"/>
@@ -94,7 +94,7 @@
 				<mass value="0.5"/>
 				<look name="black"/>
 				<compound_transform rpy="0.0 0.0 -1.571" xyz="0.0 0.0 0.0"/>
-			</external_part>			
+			</external_part>	
 						
 			<internal_part name="BatteryCylinder1" type="cylinder" physics="submerged" buoyant="true">
 				<dimensions radius="0.08" height="0.7"/>
@@ -119,7 +119,7 @@
             <specs max_setpoint="300.0" normalized_setpoint="true" inverted_setpoint="false"/>
 
             <propeller diameter="0.112" right="true">
-                <mesh filename="opti_blueboat/propeller2.obj" scale="1"/>
+                <mesh filename="opti_blueboat/propeller_cc.obj" scale="1"/>
                 <material name="Neutral"/>
                 <look name="yellow"/>
             </propeller>
@@ -183,9 +183,9 @@
 			<ros_publisher topic="/blueboat/navigator/gps"/>
 		</sensor>
 
-		<sensor name="camera_front" type="camera" rate="30.0">
+		<sensor name="camera_link" type="camera" rate="30.0">
             <link name="blueboat/base_link"/>
-            <origin rpy="0.0 0.0 0.0" xyz="0.45 0.0 0.1"/>
+            <origin rpy="0.0 0.0 0.0" xyz="0.175 0.0 -0.13"/>
             <specs resolution_x="640" resolution_y="480" horizontal_fov="80.0"/>
             <ros_publisher topic="/blueboat/camera/image_raw"/>
         </sensor>
@@ -202,7 +202,7 @@
 		<link name="blueboat/base_link"/>
 		<origin xyz="0.0 0.0 0.0" rpy="0.0 0.0 0.0"/>
 
-		<noise position="0.0" velocity="0.0" angle="0.0" angular_velocity="0.0"/>
+		<noise position="0.02" velocity="0.03" angle="0.005" angular_velocity="0.01"/>
 
 		<ros_publisher topic="/blueboat/navigator/odometry"/>
 		</sensor>
