@@ -28,6 +28,7 @@ install(
     scripts/odom2tf.py
     scripts/bluerov2_logitechF310teleop.py
     scripts/ardusim_patch.py
+    scripts/cirtesu_mesh_marker.py
     DESTINATION lib/${PROJECT_NAME}
 )
 

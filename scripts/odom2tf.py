@@ -25,7 +25,7 @@ class OdomToTf(Node):
 
         t.header.stamp = msg.header.stamp
         t.header.frame_id = 'world_ned'
-        t.child_frame_id = 'blueboat/base_link'
+        t.child_frame_id = 'blueboat/base_link_enu'
 
         t.transform.translation.x = msg.pose.pose.position.x
         t.transform.translation.y = msg.pose.pose.position.y

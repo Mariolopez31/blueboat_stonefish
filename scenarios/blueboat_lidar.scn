@@ -155,7 +155,7 @@
 			<output value="-27.557 -23.732 -15.396 -5.884 -0.883 0 2.059 15.495 27.066 42.757 52.564"/>
 			</thrust_model>
 
-            <origin rpy="1.57 0.0 0.0" xyz="-0.472 -0.26 0.0245"/>
+            <origin rpy="1.57 0.0 0.0" xyz="-0.472 -0.3 0.0245"/>
             <link name="blueboat/base_link"/>
         </actuator>
 
@@ -169,12 +169,13 @@
 			<ros_publisher topic="/blueboat/navigator/dvl_sim" altitude_topic="/bluebloat/navigator/altitude"/>
 		</sensor>
 
-		<sensor name="imu_filter" type="imu" rate="20.0">
+		<sensor name="imu_link" type="imu" rate="200.0">
 			<link name="blueboat/base_link"/>
-			<origin rpy="0.0 0.0 0.0" xyz="0.35 -0.35 -0.2"/>
-			<noise angle="0.000001745" angular_velocity="0.00001745"/>
+			<origin rpy="3.1416 0.0 0" xyz="0.115 -0.36 -0.25"/>
+			<noise angle="0.0" angular_velocity="0.0"/>
 			<ros_publisher topic="/blueboat/navigator/imu"/>
 		</sensor>
+
 
 		<sensor name="gps" type="gps" rate="1.0">
 			<link name="blueboat/base_link"/>
@@ -185,24 +186,30 @@
 
 		<sensor name="camera_link" type="camera" rate="30.0">
             <link name="blueboat/base_link"/>
-            <origin rpy="0.0 0.0 0.0" xyz="0.175 0.0 -0.13"/>
+            <origin rpy="0.0 0.0 1.5708" xyz="0.175 0.0 -0.13"/>
             <specs resolution_x="640" resolution_y="480" horizontal_fov="80.0"/>
             <ros_publisher topic="/blueboat/camera/image_raw"/>
         </sensor>
 
-		<sensor name="lidar_front" type="lidar_cpu" rate="10.0">
-			<link name="blueboat/base_link"/> 
-			<origin rpy="3.1416 0.0 0.0" xyz="0.115 -0.36 -1.25"/> 
-			<specs horizontal_res="360" vertical_res="56" horizontal_fov="360.0" vertical_fov="59.0"/>
-			<range min="0.25" max="100.0"/>
-			<ros_publisher topic="/blueboat/lidar_points"/> 
+		<sensor name="lidar_front" type="livox_mid360_cpu" rate="10">
+		<link name="blueboat/base_link"/>
+		<origin xyz="0.115 -0.36 -0.25" rpy="3.1416 0 0"/>
+		<specs horizontal_res="312" vertical_res="64"
+				point_rate="200000"
+				horizontal_fov="360"
+				vmin_deg="0" vmax_deg="52"
+				lines="4"
+				non_repetitive="1"
+				lidar_id="0"/>
+		<range min="2.0" max="70.0"/>
+		<ros_publisher topic="blueboat/livox" frame_id="blueboat/lidar_front"/>
 		</sensor>
 
 		<sensor name="odom_gt" type="odometry" rate="30.0">
 		<link name="blueboat/base_link"/>
 		<origin xyz="0.0 0.0 0.0" rpy="0.0 0.0 0.0"/>
 
-		<noise position="0.02" velocity="0.03" angle="0.005" angular_velocity="0.01"/>
+		<noise position="0.00" velocity="0.00" angle="0.00" angular_velocity="0.0"/>
 
 		<ros_publisher topic="/blueboat/navigator/odometry"/>
 		</sensor>

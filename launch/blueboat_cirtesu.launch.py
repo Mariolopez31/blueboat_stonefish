@@ -6,6 +6,8 @@ from launch_ros.actions import Node
 from launch_ros.substitutions import FindPackageShare
 from ament_index_python.packages import get_package_share_directory
 from launch.launch_description_sources import PythonLaunchDescriptionSource
+from launch_ros.parameter_descriptions import ParameterValue
+
 
 def generate_launch_description():
     # Declare launch arguments
@@ -49,7 +51,7 @@ def generate_launch_description():
                     'simulation_rate': '100.0',
                     'window_res_x': '1200',
                     'window_res_y': '800',
-                    'rendering_quality': 'high'
+                    'rendering_quality': 'high',
                 }.items()
             ),
         ]
@@ -72,11 +74,12 @@ def generate_launch_description():
         #     executable='bluerov2_logitechF310teleop.py',
         #     output='screen',
         # ),
-            Node(
-            package='blueboat_stonefish',
-            executable='odom2tf.py',
-            output='screen',
-        ),
+        #     Node(
+        #     package='blueboat_stonefish',
+        #     executable='odom2tf.py',
+        #     output='screen',
+        #     parameters=[{'use_sim_time': True}],
+        # ),
             
         Node(
             package='rviz2',
