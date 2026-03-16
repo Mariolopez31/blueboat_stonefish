@@ -64,22 +64,12 @@ def generate_launch_description():
         robot_state_publisher_node,
         namespace_action
     ,
-        # Node(
-        #     package='joy',
-        #     executable='joy_node',
-        #     output='screen',
-        # ),
-        # Node(
-        #     package='cirtesu_stonefish',
-        #     executable='bluerov2_logitechF310teleop.py',
-        #     output='screen',
-        # ),
-        #     Node(
-        #     package='blueboat_stonefish',
-        #     executable='odom2tf.py',
-        #     output='screen',
-        #     parameters=[{'use_sim_time': True}],
-        # ),
+        Node(
+        package='blueboat_stonefish',
+        executable='odom2tf.py',
+        output='screen',
+        parameters=[{'use_sim_time': True}],
+        ),
             
         Node(
             package='rviz2',
@@ -89,15 +79,6 @@ def generate_launch_description():
             arguments=['-d', PathJoinSubstitution(['src', 'blueboat_stonefish', 'config', 'blueboat_cirtesu_config.rviz'])],
             output='screen'
         ),
-        
-        # Node(
-        #     package='blueboat_stonefish',
-        #     namespace='blueboat',
-        #     executable='ardusim_patch.py',
-        #     name='ardusim_patch',
-        #     output='screen',
-        #     emulate_tty='true',
-        # ),
 
         # Launch core_sim
         # IncludeLaunchDescription(
