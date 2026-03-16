@@ -3,7 +3,7 @@
 <!-- Optional hero image -->
 
 <p align="center">
-  <img src="../../img/st.png" alt="BlueBoat in the complete CIRTESU Stonefish environment" width="1000"/>
+  <img src="./img/st.png" alt="BlueBoat in the complete CIRTESU Stonefish environment" width="1000"/>
 </p>
 
 This repository contains a specialized **Stonefish** simulation suite developed at **CIRTESU (Castellón, Spain)**.
