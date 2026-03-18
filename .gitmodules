@@ -14,3 +14,6 @@
 [submodule "simulation/stonefish"]
 	path = simulation/stonefish
 	url = https://github.com/Mariolopez31/stonefish.git
+[submodule "simulation/stonefish_ros2"]
+	path = simulation/stonefish_ros2
+	url = https://github.com/Mariolopez31/stonefish_ros2.git
