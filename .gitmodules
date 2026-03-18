@@ -7,3 +7,7 @@
 [submodule "src/blueboat_stonefish_mav2ros2"]
 	path = src/blueboat_stonefish_mav2ros2
 	url = https://github.com/Mariolopez31/blueboat_stonefish_mav2ros2.git
+[submodule "src/tandem_girona"]
+	path = src/tandem_girona
+	url = https://github.com/Mariolopez31/tandem_girona.git
+	branch = ros2
