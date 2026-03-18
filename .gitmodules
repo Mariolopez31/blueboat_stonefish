@@ -1,3 +1,6 @@
 [submodule "src/livox2_to_pc2"]
 	path = src/livox2_to_pc2
 	url = https://github.com/Mariolopez31/livox2_to_pc2.git
+[submodule "src/pc2_to_livox2"]
+	path = src/pc2_to_livox2
+	url = https://github.com/Mariolopez31/pc2_to_livox2.git
