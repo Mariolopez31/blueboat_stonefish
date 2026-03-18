@@ -21,3 +21,6 @@
 	path = src/FASTLIO_cirtesu
 	url = https://github.com/Mariolopez31/FASTLIO_cirtesu.git
 	branch = ROS2
+[submodule "src/livox_ros_driver2"]
+	path = src/livox_ros_driver2
+	url = https://github.com/Livox-SDK/livox_ros_driver2.git
