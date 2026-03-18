@@ -11,3 +11,6 @@
 	path = src/tandem_girona
 	url = https://github.com/Mariolopez31/tandem_girona.git
 	branch = ros2
+[submodule "simulation/stonefish"]
+	path = simulation/stonefish
+	url = https://github.com/Mariolopez31/stonefish.git
