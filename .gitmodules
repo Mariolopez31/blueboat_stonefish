@@ -24,3 +24,6 @@
 [submodule "src/livox_ros_driver2"]
 	path = src/livox_ros_driver2
 	url = https://github.com/Livox-SDK/livox_ros_driver2.git
+[submodule "src/blueboat_stonefish_core"]
+	path = src/blueboat_stonefish_core
+	url = https://github.com/Mariolopez31/blueboat_stonefish_core.git
