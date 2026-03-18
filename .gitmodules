@@ -17,3 +17,7 @@
 [submodule "simulation/stonefish_ros2"]
 	path = simulation/stonefish_ros2
 	url = https://github.com/Mariolopez31/stonefish_ros2.git
+[submodule "src/FASTLIO_cirtesu"]
+	path = src/FASTLIO_cirtesu
+	url = https://github.com/Mariolopez31/FASTLIO_cirtesu.git
+	branch = ROS2
