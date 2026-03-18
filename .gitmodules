@@ -4,3 +4,6 @@
 [submodule "src/pc2_to_livox2"]
 	path = src/pc2_to_livox2
 	url = https://github.com/Mariolopez31/pc2_to_livox2.git
+[submodule "src/blueboat_stonefish_mav2ros2"]
+	path = src/blueboat_stonefish_mav2ros2
+	url = https://github.com/Mariolopez31/blueboat_stonefish_mav2ros2.git
